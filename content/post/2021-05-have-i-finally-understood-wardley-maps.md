@@ -2,6 +2,7 @@
 # Common-Defined params
 title: "Dear Mr Wardley, have I finally understood your maps?"
 date: "2021-05-29"
+draft: true
 #description: "Example article description"
 categories:
   - "IT-Market"
