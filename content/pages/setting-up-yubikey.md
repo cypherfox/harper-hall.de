@@ -1,12 +1,12 @@
 ---
 title: "Setting up the YubiKey"
 date: 2021-08-01
-thumbnail: "img/placeholder.png"
+#thumbnail: "img/placeholder.png"
 tags:
   - "yubikey"
 categories:
   - "Software Engineering"
-menu: main
+#menu: main
 ---
 
 

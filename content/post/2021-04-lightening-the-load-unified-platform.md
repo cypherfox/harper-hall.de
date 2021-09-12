@@ -1,6 +1,6 @@
 ---
 # Common-Defined params
-title: "Unified Development Platform - Lightening the Mental Load""
+title: "Unified Development Platform - Lightening the Mental Load"
 date: "2021-04-25"
 #description: "Example article description"
 categories:

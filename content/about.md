@@ -1,32 +1,32 @@
 ---
-title: About Hugo
+title: About Harper Hall
 date: 2014-04-09
 authorbox: false
 sidebar: false
 menu: main
 ---
 
-Hugo is a static site engine written in Go.
+# The Harper Hall is a place of learning, and of music.
+
+I have been a big fan of the Dragonrider books of Anne McCaffrey for
+close to 35 years. Even though I do not play an instrument and know
+very little of music theory, I think it a fantastic idea to distribute
+knowledge through song and music.
+
+This is my little corner of the Halls of knowledge. Here collect
+information and my own thoughts on a number of topic of interes to
+me. These include, but are not limited to:
+
+* Building and operating distributed systems in a highly available,
+  skalable and secure manner. Everything from the distributed systems
+  theory to trends in market adoption of tools and frameworks to make
+  this happen. I do Kubernetes, prefer Erlang and Go over Java and
+  ECMA-Script. 
+  
+* Software system automation. Notes to make my life easier.
+
+* Designing, running and playing Table Top Roleplaying Systems
+  (TTRGPs). I hate D&D, but love Critical Role.
+  
 
 
-It makes use of a variety of open source projects including:
-
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
-
-Learn more and contribute on [GitHub](https://github.com/spf13).
-
-## Setup
-
-Some fun facts about [Hugo](http://gohugo.io/):
-
-* Built in [Go](http://golang.org/)
-* Loosely inspired by [Jekyll](http://jekyllrb.com/)
-* Primarily developed by [spf13](http://spf13.com/) on the train while commuting to and from Manhattan.
-* Coded in [Vim](http://vim.org) using [spf13-vim](http://vim.spf13.com/)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/spf13/hugo/issues/new) or [ask me on Twitter](https://twitter.com/spf13).
-
-Thanks for reading!

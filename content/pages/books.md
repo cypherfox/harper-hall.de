@@ -1,7 +1,7 @@
 ---
 title: "Books of Interest"
 date: 2021-05-31
-thumbnail: "img/placeholder.png"
+#thumbnail: "img/placeholder.png"
 tags:
   - "links"
 categories:

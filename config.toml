@@ -40,7 +40,7 @@ theme = "mainroad"
 [Params.logo]
   image = "images/avatar.png" # Logo image. Path relative to "static"
   title = "Harper Hall" # Logo title, otherwise will use site title
-  subtitle = "Harper Hall" # Logo subtitle
+  subtitle = "a house for learning, music and enterntainment (except the music)" # Logo subtitle
 
 [Params.sidebar]
   home = "right" # Configure layout for home page

@@ -1,7 +1,6 @@
 ---
 title: "Things of Interest"
-date: 2021-05-14
-thumbnail: "img/placeholder.png"
+#thumbnail: "img/placeholder.png"
 tags:
   - "links"
 categories:
