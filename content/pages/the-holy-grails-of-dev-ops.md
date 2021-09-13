@@ -53,10 +53,12 @@ pipeline informs the developer proactively that deploying the code
 failed. No regular polling of websites for any updates. No news is
 good news.
 
-- the problem of facing the fear: do we trust the code to run it in
-  production. Too often this is not resolved with more tests, but
-  rather deployments are post-poned to regular intervals. This only
-  increases the pain.
+The most likely problem is facing the fear: do we trust the code to run it in
+production? Too often this is not resolved with more tests, but
+rather deployments are post-poned to regular intervals. This will only
+increase the pain when the massive change is deployed eventually.
+
+- nothing new, has already be discussed in a, b and c.
 
 ### Corollary 1.1: Each and every commit is a potential deployment to production.
 
