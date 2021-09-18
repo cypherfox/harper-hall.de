@@ -17,13 +17,15 @@ There is neither such a thing as a DevOps-Engineer nor a DevOps team
 (and neither is there a Full-Stack Developer, but that is a story for
 another day). 
 
+But there are technical and organisational steps that help to improve the effectiveness of your organisation and the quality of the services you provide. Yet, this is still an cultural change and may mean you willl have to change your organisation to achieve them.
+
 ## What do I mean with Holy Grail?
 
 The Holy Grail I am referring to is not so much the drinking vessel
 of the son of a middle class craftsman (He could afford to marry out of
 town). 
 
-But is more about an idealised goal, as described by Arthurian lore
+Rather it is more about an idealised goal, as described by Arthurian lore
 and Parsifal and other works of the medieval troubadours. This goal
 is distinguished by the fact that it cannot be reached by mere
 mortals. Attaining them requires you to transform yourself, in order
@@ -41,20 +43,17 @@ fact that we will not reach them, but because of it.
 The idea of test-automation, Constant Integration (CI) and Constant
 Deployment (CD) have been around for a number of years. They have
 been published widely, e.g. "[Continuous Delivery](https://www.amazon.com/-/de/dp/0321601912)" by Humble and
-Farley. In the "[DevOps Handbook](https://www.amazon.com/-/de/dp/1942788002)" by Kim
-et.al. Section III even focuses on the benefits for organisations to
-undertake this transformation.
+Farley. In the "[DevOps Handbook](https://www.amazon.com/-/de/dp/1942788002)" by Kim et.al. Section III even focuses on the benefits for organisations to undertake this transformation.
 
 But very few organisations carry this through to the logical end: after
 a developer has written a piece of code, nobody (especially not the
-developer) should not have any manual interaction with
-it. Unless the code is deemed unfit for production. In that the
-pipeline informs the developer proactively that deploying the code
-failed. No regular polling of websites for any updates. No news is
-good news.
+developer) should need to have any manual interaction with
+it. 
 
-The most likely problem is facing the fear: do we trust the code to run it in
-production? Too often this is not resolved with more tests, but
+Unless the code is deemed unfit for production and needs further work. 
+In which case the pipeline informs the developer proactively that deploying the code failed. There must be no constant polling of websites for any updates. No news is good news.
+
+I believe that facing the fear is the hardest problem: do we trust the code to run it in production? Too often this is not resolved with more tests, but
 rather deployments are post-poned to regular intervals. This will only
 increase the pain when the massive change is deployed eventually.
 
@@ -178,7 +177,17 @@ for requesting more resources.
   processes and technical details of making the resources available
   like [Monoskope](https://monoskope.io/).
 
-### Corollary 1.3: A new working configuration is derived automatically
+### Corollary 1.3: Any Approval processes for resources are abstracted away.
+
+From a business and cost control point of view it makes a lot of sense to require a human to request any resources at least once. This could happen through a needed permission being delegated to a CI/CD pipeline. Or through a one-time interaction of a human with the API, redardless of a CLI command or a web UI being used.
+
+But the request should not require the human to enter any information other than the resource type and skope required (e.g. how may vCPUs, how much GB of RAM).
+
+Why ask for a reason or explanation. This shows a lack of trust. Why have the human run around and collect signatures on a piece of paper? A computer can contact and inform any required reviewers much faster, and thus cheaper. The initial user has already stated his or her needs. If the organisation does not trust that user with a few spare cycles, how should it trust them with the cost of developing software.
+
+Whether the decision to grant or deny the resources is a complex one, it should all be automated, requesting input from other parties when needed. Any final decision should be presented proactively to the requester. And making completely transparent why the decision has been reached.
+
+### Corollary 1.4: A new working configuration is derived automatically
 
 **Goal: The latest possible configuration of components for deployment
 to production is derived automatically.**
@@ -186,6 +195,7 @@ to production is derived automatically.**
 One point of contentions I have experienced in the past is the need to
 manually define deployment configurations from multiple versions of
 components. E.g. Update
+
 
 
 ## Grail 2: No Human comes in contact with any secrets used in production
