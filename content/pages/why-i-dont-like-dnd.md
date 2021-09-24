@@ -69,6 +69,7 @@ games to a exhaustion mechanic as in the ShadowRun RPGs.
 
 # Action Economy
 
+[Taking your turn](https://www.youtube.com/watch?v=3GK2sRr1Kac) 
 
 # Combat
 

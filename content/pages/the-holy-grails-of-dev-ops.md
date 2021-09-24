@@ -17,7 +17,10 @@ There is neither such a thing as a DevOps-Engineer nor a DevOps team
 (and neither is there a Full-Stack Developer, but that is a story for
 another day). 
 
-But there are technical and organisational steps that help to improve the effectiveness of your organisation and the quality of the services you provide. Yet, this is still an cultural change and may mean you willl have to change your organisation to achieve them.
+But there are technical and organisational steps that help to improve
+the effectiveness of your organisation and the quality of the services
+you provide. Yet, this is still an cultural change and may mean you
+willl have to change your organisation to achieve them. 
 
 ## What do I mean with Holy Grail?
 
@@ -43,7 +46,9 @@ fact that we will not reach them, but because of it.
 The idea of test-automation, Constant Integration (CI) and Constant
 Deployment (CD) have been around for a number of years. They have
 been published widely, e.g. "[Continuous Delivery](https://www.amazon.com/-/de/dp/0321601912)" by Humble and
-Farley. In the "[DevOps Handbook](https://www.amazon.com/-/de/dp/1942788002)" by Kim et.al. Section III even focuses on the benefits for organisations to undertake this transformation.
+Farley. In the "[DevOps Handbook](https://www.amazon.com/-/de/dp/1942788002)" by Kim
+et.al. Section III even focuses on the benefits for organisations to
+undertake this transformation. 
 
 But very few organisations carry this through to the logical end: after
 a developer has written a piece of code, nobody (especially not the
@@ -51,11 +56,15 @@ developer) should need to have any manual interaction with
 it. 
 
 Unless the code is deemed unfit for production and needs further work. 
-In which case the pipeline informs the developer proactively that deploying the code failed. There must be no constant polling of websites for any updates. No news is good news.
+In which case the pipeline informs the developer proactively that
+deploying the code failed. There must be no constant polling of
+websites for any updates. No news is good news. 
 
-I believe that facing the fear is the hardest problem: do we trust the code to run it in production? Too often this is not resolved with more tests, but
-rather deployments are post-poned to regular intervals. This will only
-increase the pain when the massive change is deployed eventually.
+I believe that facing the fear is the hardest problem: do we trust the
+code to run it in production? Too often this is not resolved with more
+tests, but rather deployments are post-poned to regular
+intervals. This will only increase the pain when the massive change is
+deployed eventually. 
 
 - nothing new, has already be discussed in a, b and c.
 
@@ -101,7 +110,9 @@ changes are deployed to production.
   
 ### Corollary 1.2: All resources are available via APIs.
 
-**Goal: acquiring all resources can be achieved via APIs.**
+**Goal: acquiring all resources needed for work can be achieved via
+APIs. These APIs can in turn be wrapped in ready made Web UIs oder CLI
+command tools. The latter can again in turn be used for automation scripts.**
 
 Many seemingly fully automated CI/CD pipelines rely on a costly
 initial setup to acquire all resources potentially needed to full-fill
@@ -130,18 +141,11 @@ granting access to resources or the right to request further resources
 should be made available via an API, in order to create any needed
 delegation scenario.
 
-Also resources should be reclaimed automatically when not in use, or after a
-certain time, unless the request has been renewed. This is especially
-useful in development contexts, as recreating a working software
-stack from scratch becomes part of the daily experience from the start
-of any project. 
-
-
-- hard to control, as requests are automated, and errors at the end of
-  the life-cycle of resources may not be caught and thus resources not
-  be released and thus add to the resource costs. Here, a control-loop
-  approach serves well again, to ensure that nothing is requested (or
-  not released) that is not used either.
+Also resources should be reclaimed automatically when not in use, or
+after a certain time, unless the request has been renewed. This is
+especially useful in development contexts, as recreating a working
+software stack from scratch becomes part of the daily experience from
+the start of any project. 
   
 Technically reaching this goal is simple when you only consume
 resources from the public cloud, as that it is the only method to
@@ -155,6 +159,8 @@ open-source solutions like [Open Nebula](https://opennebula.io/) for
 virtual machines or the [Metal Stack](https://metal-stack.io/) for
 Kubernetes based container solutions.
 
+### Corollary 1.3: Any approval processes for resources must be abstracted away.
+
 Where many organisations squander the capabilities offered by an API
 driven procurement of resources is the process required of users to
 gain access to these resources. This can often be traced back to a lack of
@@ -163,29 +169,44 @@ act within the interest of the organisation and sparingly use the
 available resources. One common result is time wasted on the discussion
 whether a certain resource is needed, when and how much of it.
 
-But the bigger issue is the effect of hoarding resources. When it was
-painful to get access to a resource, it is only human to be reluctant
-to give it up, as potential future use would the pain to be endured
-again. This is usually compounded by the perception that an increase
-of the amount of resources does not reflect in an analogue increase of
-effort. Thus it makes sense for the user to *always* overestimate the
-amount of resources needed, lest she will have to repeat the process
-for requesting more resources.
+The result of a painful approval process is usually some amount of
+hoarding resources. When it was painful to get access to a resource,
+it is only human to be reluctant to give it up, as potential future
+use would the pain to be endured again. This is usually compounded by
+the perception that an increase of the amount of resources does not
+reflect in an analogue increase of effort. Thus it makes sense for the
+user to *always* overestimate the amount of resources needed, lest she
+will have to repeat the process for requesting more resources.
 
-* Hide complex business rules for releasing resources to individual
-  behind a higher level platform that encapsulates both the approval
-  processes and technical details of making the resources available
-  like [Monoskope](https://monoskope.io/).
+From a business and cost control point of view it may makes a lot of sense
+to require a human to request any resources at least once. This could
+happen through a needed permission being delegated to a CI/CD
+pipeline. Or through a one-time interaction of a human with the API,
+redardless of a CLI command or a web UI being used. 
 
-### Corollary 1.3: Any Approval processes for resources are abstracted away.
+But the request should not require the human to enter any information
+other than the resource type and skope required (e.g. how may vCPUs,
+how much GB of RAM). 
 
-From a business and cost control point of view it makes a lot of sense to require a human to request any resources at least once. This could happen through a needed permission being delegated to a CI/CD pipeline. Or through a one-time interaction of a human with the API, redardless of a CLI command or a web UI being used.
+Why ask for a reason or explanation. This shows a lack of trust. Why
+have the human run around and collect signatures on a piece of paper?
+A computer can contact and inform any required reviewers much faster,
+and thus cheaper. The initial user has already stated his or her
+needs. If the organisation does not trust that user with a few spare
+cycles, how should it trust them with the cost of developing
+software. 
 
-But the request should not require the human to enter any information other than the resource type and skope required (e.g. how may vCPUs, how much GB of RAM).
+Whether the decision to grant or deny the resources is a simple or complex one,
+it should all be automated, requesting input from other parties when
+needed. Any final decision should be presented proactively to the
+requester. And making completely transparent why the decision has been
+reached. 
 
-Why ask for a reason or explanation. This shows a lack of trust. Why have the human run around and collect signatures on a piece of paper? A computer can contact and inform any required reviewers much faster, and thus cheaper. The initial user has already stated his or her needs. If the organisation does not trust that user with a few spare cycles, how should it trust them with the cost of developing software.
+Hide complex business rules for releasing resources to individual
+behind a higher level platform that encapsulates both the approval
+processes and technical details of making the resources available
+like [Monoskope](https://monoskope.io/).
 
-Whether the decision to grant or deny the resources is a complex one, it should all be automated, requesting input from other parties when needed. Any final decision should be presented proactively to the requester. And making completely transparent why the decision has been reached.
 
 ### Corollary 1.4: A new working configuration is derived automatically
 
@@ -274,6 +295,26 @@ system.
 - No more "I just run these two dozen commands from my shell
   history". This is neither reproducible, nor auditable.
 
+### Corollary 3.2: Only one account per human allowed
+
+This is an aim that aims both at reducing the complexity of
+maintaining credentials for the users and granted permissions based on
+these credentials for management.
+
+Especially in regulated enviroments a regular report about the granted
+permissions and their review has to be prepared. This is made a lot
+easier if only a single account is managed by the organisation for
+each human interacting with the system, regardless of their role in
+the organisation or external to it.
+
+At the same time does a smaller number of credentials improve the
+likelyhood of stronger password being used. When a single password for
+a shared account, or even better a Single Sign On (SSO) system is
+used, it is easy for users to remember even fairly complex password
+without the need to write them down. 
+
+This single account then can easily be combined with multifactor
+authentication, which improves security even further.
 
 ## Further Observations
 
