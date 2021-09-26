@@ -1,13 +1,13 @@
 ---
 title: "The Three Holy Grails of DevOps"
-#date: 2021-09-12
+date: 2021-09-26
 #thumbnail: "img/placeholder.png"
 tags:
   - "dev-ops"
 categories:
   - "Software Engineering"
 #menu: main
-draft: true
+#draft: true
 ---
 
 Establishing DevOps is a change in culture. It is all about trust,
@@ -19,9 +19,14 @@ another day).
 
 But there are technical and organizational steps that help to improve
 the effectiveness of your organization and the quality of the services
-you provide. Yet, this is still an cultural change and likely to require you to change your organization in order to achieve them. 
+you provide. Yet, this is still an cultural change and likely to
+require you to change your organization in order to achieve them. 
 
-I propose three overarching goals that should guide your design and break them down into a number of individual approaches for more specific design choices. I hope to get around to writing individual postings on how to actually implement these corollaries in the future, but this may take some time. Please do not hold your breath.
+I propose three overarching goals that should guide your design and
+break them down into a number of individual approaches for more
+specific design choices. I hope to get around to writing individual
+postings on how to actually implement these corollaries in the future,
+but this may take some time. Please do not hold your breath. 
 
 ## What do I mean with Holy Grail?
 
@@ -38,7 +43,7 @@ may also transform you to become something you did not set out to
 be. And therein lies the impossibility of obtaining the Grail: only a
 saint can even touch it, not mere mortals like you and me. 
 
-But the ideals, which the grail represents, are still worthwhile to
+But the ideals, which the Grail represents, are still worthwhile to
 strive for, as they help humans to live better lives. Not despite the
 fact that we will not reach them, but because of it. 
 
@@ -67,9 +72,20 @@ tests, but rather deployments are postponed to regular
 intervals. This will only increase the pain when the massive change is
 deployed eventually. 
 
-In order to check your progress towards this Grail, I would suggest the following metric: broken builds per commit. It counts the commits that did not successfully deploy to production, divided by the number of commits made. If it consistently hits zero, then you have reached the Grail. 
+In order to check your progress towards this Grail, I would suggest
+the following metric: broken builds per commit. It counts the commits
+that did not successfully deploy to production, divided by the number
+of commits made. If it consistently hits zero, then you have reached
+the Grail.  
 
-This metric is not for managers! There are so many ways to fudge this metric if you want to, to make it worthless as a measurement of dev productivity. But it can be an indicator of the efficiency of the QA pipeline!. As we trust the dev to work as thoroughly as they can, failing later pipelines *may* indicate that the dev was let down by not being able to work certain parts of the CI pipeline or the QA system. And both should be maintained by the developers themselves, they need put more effort into improving it.
+This metric is not for managers! There are so many ways to fudge this
+metric if you want to, to make it worthless as a measurement of dev
+productivity. But it can be an indicator of the efficiency of the QA
+pipeline!. As we trust the dev to work as thoroughly as they can,
+failing later pipelines *may* indicate that the dev was let down by
+not being able to work certain parts of the CI pipeline or the QA
+system. And both should be maintained by the developers themselves,
+they need put more effort into improving it. 
 
 
 ### Corollary 1.1: Each and every commit is a potential deployment to production.
@@ -88,13 +104,17 @@ for a number of reasons.
 
 The biggest issue the need to utterly trust each developer with the
 well-being of the whole organization. As the complete state of the
-production can be changed with a simple commit, proposing to implement may create only a lukewarm reaction from upper management, investors or even
-the customers. Beyond organizational rules, there may also be
+production can be changed with a simple commit, proposing to implement
+may create only a lukewarm reaction from upper management, investors
+or even the customers. Beyond organizational rules, there may also be
 regulatory obligations that require at least a 4-eye policy.
 
-Maybe providing some form of guardrails against unintended mishaps is not a bad idea. Humans make mistakes.  Fortunately this need can easily be turned into a strength by establishing a strong **Review Process**. This does introduce a further manual step but not only
-fulfills any need for application of the 4-eye principle, but also provides
-a way for junior developers to learn and discuss code and architectures by
+Maybe providing some form of guardrails against unintended mishaps is
+not a bad idea. Humans make mistakes.  Fortunately this need can
+easily be turned into a strength by establishing a strong **Review
+Process**. This does introduce a further manual step but not only
+fulfills any need for application of the 4-eye principle, but also
+provides a way for junior developers to learn and discuss code and architectures by
 being required to review code of others as well as the more experienced team
 members.
 
@@ -135,10 +155,11 @@ granting access to resources or the right to request further resources
 should be made available via an API, in order to create any needed
 delegation scenario.
 
-Additionally, resources should be reclaimed automatically when not in use, or after a certain time, unless the request has been renewed. This is
-especially useful in development contexts, as recreating a working
-software stack from scratch becomes part of the daily experience from
-the start of any project. 
+Additionally, resources should be reclaimed automatically when not in
+use, or after a certain time, unless the request has been
+renewed. This is especially useful in development contexts, as
+recreating a working software stack from scratch becomes part of the
+daily experience from the start of any project. 
   
 Technically reaching this goal is simple when you only consume
 resources from the public cloud, as that it is the only method to
@@ -215,13 +236,13 @@ One step further are the dependency management systems of Ruby, Elixir or Golang
 
 But in the case of loosely coupled services deployed across the cloud, there has not yet been a widely adopted solution.
 
-## Grail 2: No Human comes in contact with any secrets used in production
+## The Second Holy Grail: No Human comes in contact with any secrets used in production
 
 Providing services with software components used to be split into at least two parts: developing and operating the software. In that context the developer never comes into contact with any of the data of the customers, as actually running it in production is the responsibility of somebody else. With the change to DevOps mantra of "you write it, your run it", this has changed, as everybody within the organization may need to access the production environment in some form or other.
 
 But the DevOps paradigm shift should not mean that everybody can freely read the customer data, or maybe even write to it. And I take the customer data to include the customer credentials as well as the actual production data provided by the customers or its customers in turn. Customer credentials may either be used to authenticate between components internally or to external services, e.g. other cloud service providers.
 
-## Corollary 2.1: Expect your code to be published to GitHub any day now.
+### Corollary 2.1: Expect your code to be published to GitHub any day now.
 
 **Goal: The code base shall be created as such that publishing all source code publicly will neither risk the confidentiality of customer data nor threaten availability for the services rendered.**
 
@@ -255,7 +276,7 @@ If a human creates a secret and then shares it with a computer, it creates the s
 
 The same is true when humans are authenticating to machines. While Identity and Account Management (IAM) systems are the accepted practice, all too often users are expected to enter their passwords in multiple login dialogs in clear text, again sharing the information with more machines. Do not use clear text password exchanges to anybody or anything. That's whats mTLS and ssh are for.
   
-## Grail 3: No Human has Privileged Access to Production Systems.
+## The Third Holy Grail: No Human has Privileged Access to Production Systems.
 
 Most software stacks today establish the role of some form of admin user, that has the power to change any aspect of the system state, read any credential or data within the application. This poses two fundamental problems: 
 

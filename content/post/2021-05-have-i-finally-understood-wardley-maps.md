@@ -5,7 +5,7 @@ date: "2021-05-29"
 draft: true
 #description: "Example article description"
 categories:
-  - "IT-Market"
+  - "IT Business"
 #  - "Category 2"
 tags:
   - "lang-en"
