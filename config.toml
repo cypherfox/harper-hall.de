@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://cypherfox.github.io/harper-hall.de/"
 languageCode = "en-us"
 title = "Harper Hall"
 theme = "mainroad"
