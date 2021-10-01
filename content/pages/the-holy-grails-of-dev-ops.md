@@ -202,7 +202,9 @@ regardless of a CLI command or a web UI being used.
 
 But the request should not require the human to enter any information
 other than the resource type and scope required (e.g. how may vCPUs,
-how much GB of RAM). Ideally this request is also not made implicit in some ordering portal, but rather explicit when the resource is actually used.
+how much GB of RAM). Ideally this request is also not made implicit in
+some ordering portal, but rather explicit when the resource is
+actually used. 
 
 Why ask for a reason or explanation. This shows a lack of trust. Why
 have a human run around and collect signatures on a piece of paper?
@@ -212,8 +214,9 @@ needs. If the organization does not trust that user with a few spare
 cycles, how should it trust them with the cost of developing
 software. 
 
-Whether the decision to grant or deny the resources is a simple or complex one, it should all be automated, requesting input from other parties when
-needed. Any final decision should be presented proactively to the
+Whether the decision to grant or deny the resources is a simple or
+complex one, it should all be automated, requesting input from other
+parties when needed. Any final decision should be presented proactively to the
 requester. And making completely transparent why the decision has been
 reached. 
 
@@ -227,24 +230,50 @@ processes and technical details of making the resources available.
 
 One point of contentions I have experienced in the past is the need to
 manually define deployment configurations from multiple versions of
-components. E.g. Update of component X may require the component Y, which may nor may not collide with the dependency requirements of component Z.
-As this is hard to do, most will start to talk about DLL-Hell of incompatible component versions and shirk at updating the versions of the overall set.
+components. E.g. Update of component X may require the component Y,
+which may nor may not collide with the dependency requirements of
+component Z. 
+As this is hard to do, most will start to talk about DLL-Hell of
+incompatible component versions and shirk at updating the versions of
+the overall set.
 
-Solutions for statically defining component vectors have around for many years with tools like Maven or Ivy for Java, Helm charts in the cloud-native realm. A human needs to figure out the working combination and write that down.
+Solutions for statically defining component vectors have around for
+many years with tools like Maven or Ivy for Java, Helm charts in the
+cloud-native realm. A human needs to figure out the working
+combination and write that down.
 
-One step further are the dependency management systems of Ruby, Elixir or Golang, as the allow defining ranges of semantic version that are expected to work together, and leave it up to a specialized solver for figuring out a working CVV.
+One step further are the dependency management systems of Ruby, Elixir
+or Golang, as the allow defining ranges of semantic version that are
+expected to work together, and leave it up to a specialized solver for
+figuring out a working CVV.
 
-But in the case of loosely coupled services deployed across the cloud, there has not yet been a widely adopted solution.
+But in the case of loosely coupled services deployed across the cloud,
+there has not yet been a widely adopted solution.
 
 ## The Second Holy Grail: No Human comes in contact with any secrets used in production
 
-Providing services with software components used to be split into at least two parts: developing and operating the software. In that context the developer never comes into contact with any of the data of the customers, as actually running it in production is the responsibility of somebody else. With the change to DevOps mantra of "you write it, your run it", this has changed, as everybody within the organization may need to access the production environment in some form or other.
+Providing services with software components used to be split into at
+least two parts: developing and operating the software. In that
+context the developer never comes into contact with any of the data of
+the customers, as actually running it in production is the
+responsibility of somebody else. With the change to DevOps mantra of
+"you write it, your run it", this has changed, as everybody within the
+organization may need to access the production environment in some
+form or other.
 
-But the DevOps paradigm shift should not mean that everybody can freely read the customer data, or maybe even write to it. And I take the customer data to include the customer credentials as well as the actual production data provided by the customers or its customers in turn. Customer credentials may either be used to authenticate between components internally or to external services, e.g. other cloud service providers.
+But the DevOps paradigm shift should not mean that everybody can
+freely read the customer data, or maybe even write to it. And I take
+the customer data to include the customer credentials as well as the
+actual production data provided by the customers or its customers in
+turn. Customer credentials may either be used to authenticate between
+components internally or to external services, e.g. other cloud
+service providers.
 
 ### Corollary 2.1: Expect your code to be published to GitHub any day now.
 
-**Goal: The code base shall be created as such that publishing all source code publicly will neither risk the confidentiality of customer data nor threaten availability for the services rendered.**
+**Goal: The code base shall be created as such that publishing all
+source code publicly will neither risk the confidentiality of customer
+data nor threaten availability for the services rendered.** 
 
 This is a decision that your organization will likely never make. This can
 be due to financial reasons. The source code you write represents a
@@ -260,9 +289,15 @@ blessing. Let the lawyers go after anybody who tries to set up a clone
 of your service using your software. At least you will not have to
 scramble to secure your customer data. 
 
-It is a good indication that you on track on achieving this goal, when all source code should is visible for all members of the organization. No silos with secret code drops. No devs-only version control systems. 
+It is a good indication that you on track on achieving this goal, when
+all source code should is visible for all members of the
+organization. No silos with secret code drops. No devs-only version
+control systems. 
   
-This goal can only be reached when even all configuration can be made public and still not endanger the integrity of customer data or service availability. This may seem strange at first but by following the next corollary may actually be achieved.
+This goal can only be reached when even all configuration can be made
+public and still not endanger the integrity of customer data or
+service availability. This may seem strange at first but by following
+the next corollary may actually be achieved.
 
 ### Corollary 2.2: Credentials are not shared.
 
@@ -272,33 +307,83 @@ machines. Nor to setup or bootstrap any process. If a machine needs
 credentials, it needs to create its own and a secure key exchange must
 distribute them.**
 
-If a human creates a secret and then shares it with a computer, it creates the same problem as if the human would create credentials for other humans. This is generally accepted as bad practice. But while it is common for humans to receive an initial password that needs to be changed as soon as possible, the same is often not true for machine credentials.
+If a human creates a secret and then shares it with a computer, it
+creates the same problem as if the human would create credentials for
+other humans. This is generally accepted as bad practice. But while it
+is common for humans to receive an initial password that needs to be
+changed as soon as possible, the same is often not true for machine
+credentials.
 
-The same is true when humans are authenticating to machines. While Identity and Account Management (IAM) systems are the accepted practice, all too often users are expected to enter their passwords in multiple login dialogs in clear text, again sharing the information with more machines. Do not use clear text password exchanges to anybody or anything. That's whats mTLS and ssh are for.
+The same is true when humans are authenticating to machines. While
+Identity and Account Management (IAM) systems are the accepted
+practice, all too often users are expected to enter their passwords in
+multiple login dialogs in clear text, again sharing the information
+with more machines. Do not use clear text password exchanges to
+anybody or anything. That's whats mTLS and SSH are for.
   
 ## The Third Holy Grail: No Human has Privileged Access to Production Systems.
 
-Most software stacks today establish the role of some form of admin user, that has the power to change any aspect of the system state, read any credential or data within the application. This poses two fundamental problems: 
+Most software stacks today establish the role of some form of admin
+user, that has the power to change any aspect of the system state,
+read any credential or data within the application. This poses two
+fundamental problems:
 
-First there has to be a person that is trusted enough to be granted such sweeping powers. This may be valid for a installation and setup scenario and thus be limited to a single person per trust domain and this a separation of concerns over the full set of domains within an organization. There may even be a 4-eye principle be applied during a time-boxed installation time. But this requires more and more effort for long term service delivery. What happens when an admin leaves the organization? Are there enough people available 24/7 that can provide 4-eye operation? While this may be possible for large, especially critical infrastructure operations, it quickly becomes unwieldy and expensive.
+First there has to be a person that is trusted enough to be granted
+such sweeping powers. This may be valid for a installation and setup
+scenario and thus be limited to a single person per trust domain and
+this a separation of concerns over the full set of domains within an
+organization. There may even be a 4-eye principle be applied during a
+time-boxed installation time. But this requires more and more effort
+for long term service delivery. What happens when an admin leaves the
+organization? Are there enough people available 24/7 that can provide
+4-eye operation? While this may be possible for large, especially
+critical infrastructure operations, it quickly becomes unwieldy and
+expensive. 
 
-Secondly it creates a target for attackers. This may either be electronic, by making the credentials of such an individual especially valuable for attackers. But I may also be social or even physical, by coercing the holder of such credentials to act for the attacker. I the overall system is designed in such a manner that change is a normal process, in which unexpected changes will raise a number of alarms and e.g. do not pass checks and reviews, the utility of threatening the well-being of a member of the organization or their family is greatly reduced.
+Secondly it creates a target for attackers. This may either be
+electronic, by making the credentials of such an individual especially
+valuable for attackers. But I may also be social or even physical, by
+coercing the holder of such credentials to act for the attacker. I the
+overall system is designed in such a manner that change is a normal
+process, in which unexpected changes will raise a number of alarms and
+e.g. do not pass checks and reviews, the utility of threatening the
+well-being of a member of the organization or their family is greatly
+reduced. 
 
-In reality there may be special circumstances, in which privileged operations have to be performed. But these should either follow the same guidelines as the initial installation or use special break-glass procedure that are obvious to many when used and the contained credentials are not available to any human unless the glass is actually broken. After which the credentials are rotated and the procedure is reset.
+In reality there may be special circumstances, in which privileged
+operations have to be performed. But these should either follow the
+same guidelines as the initial installation or use special break-glass
+procedure that are obvious to many when used and the contained
+credentials are not available to any human unless the glass is
+actually broken. After which the credentials are rotated and the
+procedure is reset. 
 
 ### Corollary 3.1: System Management through unprivileged programs
 
-**Goal: All changes to the configuration of any production system is achieved through configuration automatically picked up by the system, or software written to manipulate the state of the system.**
+**Goal: All changes to the configuration of any production system is
+achieved through configuration automatically picked up by the system,
+or software written to manipulate the state of the system.** 
 
-This is an extension to GitOps, which will serve almost all needs once a sufficiently trusted distribution and deployment system is in place.  For unexpected corner cases, one-time scripts can be used. There must be no more "I just run these two dozen commands from my shell history". This is neither reproducible, nor auditable.
+This is an extension to GitOps, which will serve almost all needs once
+a sufficiently trusted distribution and deployment system is in place.
+For unexpected corner cases, one-time scripts can be used. There must
+be no more "I just run these two dozen commands from my shell
+history". This is neither reproducible, nor auditable. 
 
-As the configuration and state change scripts are not only configuration-as-code, but possibly code-as-code, they can pass through the already established review and testing process. Making changes to the system should be normal daily business.
+As the configuration and state change scripts are not only
+configuration-as-code, but possibly code-as-code, they can pass
+through the already established review and testing process. Making
+changes to the system should be normal daily business. 
 
-The changes should be picked up in a pull-based manner. The target system should be able to discover that a requested change is available and apply it once.
+The changes should be picked up in a pull-based manner. The target
+system should be able to discover that a requested change is available
+and apply it once. 
   
 ### Corollary 3.2: Only one account per human allowed
 
-**Goal: as there is no privileged operation any more, there is not need for administrative accounts. The must only be one account per human**
+**Goal: as there is no privileged operation any more, there is not
+need for administrative accounts. The must only be one account per
+human** 
 
 This is an aim that aims both at reducing the complexity of
 maintaining credentials for the users and granted permissions based on
@@ -319,12 +404,64 @@ without the need to write them down.
 This single account then can easily be combined with multi-factor
 authentication, which improves security even further.
 
-### Corollary 3.3: No human access to customer data
+### Corollary 3.3: No human has access to customer data
 
-**Goal: there is no clear text access to customer data, either while the system is operating nor while it is stopped.**
+**Goal: there is no clear-text access for developers or operators to
+customer data, neither while the system is working nor while it is stopped.** 
 
-Implementing this would be straight forward: encrypt all data in transit or at rest. There must be no more quick unpack by a
-super-user. And as the required keys and credentials are not shared with human users (as per 2.2), there is not even the possibility of a data leak. Unless a suitable exfiltration function was built into the system. Which should be made impossible through the code review discussed in 1.1 as well as the fact that all other devs could see it, due to 2.1.
+Implementing this would be straight forward: encrypt all data in
+transit or at rest. There must be no more quick unpack by a
+super-user. And as the required keys and credentials are not shared
+with human users (as per 2.2), there is not even the possibility of a
+data leak. Unless a suitable exfiltration function was built into the
+system. Which should be made impossible through the code review
+discussed in 1.1 as well as the fact that all other devs could see it,
+due to 2.1. 
 
-Unfortunately does this approach create a string of hen-and-egg scenarios that have to be worked through carefully. But even worse is the fact that a lot of software stacks do not offer the features to support this. And as few customers are willing to pay for these security features, the companies and projects offering them are unwilling to invest the effort to implement them.
+Unfortunately does this approach create a string of hen-and-egg
+scenarios that have to be worked through carefully. But even worse is
+the fact that a lot of software stacks do not offer the features to
+support this. And as few customers are willing to pay for these
+security features, the companies and projects offering them are
+unwilling to invest the effort to implement them. 
+
+## Adversaries
+
+- contracts that block time for updates or require release cycles
+-
+
+## Conclusion
+
+After you have established a DevOps culture and are following the
+actual tenants of working agile as proposed in the [Agile
+Manifest](https://agilemanifesto.org/), you may want to select a more
+long-term goal to strive for.
+
+With the three Grails I hope to provide a set of ideals to strive
+for. But like the Grail of old, it will require the unwaning resolve
+of a mythical knight to follow these goals against many obstacles.
+
+Almost none of the corollaries presented above are revolutionary or
+new. But I have not heard of any organization that has fully achieved
+all of them. Those that come close are technological leaders. The
+DevOps Handbook and it's follow-up,
+[Accelerate](https://www.amazon.com/-/de/dp/1942788339) by Forsgren
+et. al. analyze a number of companies that are at the forefront of
+this journey.
+
+### Benefits
+
+One result of striving for the Three Grails is a service stack that
+can reach three vital aspects at the same time: being a) highly
+secure, b) adaptable to new customer or business requirements, and c)
+recover quickly from disaster cases, which are not covered by the
+automatic fault-tolerance built into most cloud-native systems.
+
+The focus on separating humans from dangerous data plays into the same
+vein that comprehensive test stacks do: reducing the risk as well as
+the effort involved in creating clones of the production stack for
+conducting experiments.
+
+In the end all of this has the goal of making humans only do tasks
+that they are good at: learning and being creative.
 
