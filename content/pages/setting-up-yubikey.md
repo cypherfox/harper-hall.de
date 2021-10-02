@@ -4,8 +4,9 @@ date: 2021-08-01
 #thumbnail: "img/placeholder.png"
 tags:
   - "yubikey"
+  - "lang-en"
 categories:
-  - "Software Engineering"
+  - "System Administration"
 #menu: main
 ---
 

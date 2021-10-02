@@ -4,6 +4,7 @@ date: 2021-09-26
 #thumbnail: "img/placeholder.png"
 tags:
   - "dev-ops"
+  - "lang-en"
 categories:
   - "Software Engineering"
 #menu: main
@@ -320,7 +321,32 @@ practice, all too often users are expected to enter their passwords in
 multiple login dialogs in clear text, again sharing the information
 with more machines. Do not use clear text password exchanges to
 anybody or anything. That's whats mTLS and SSH are for.
-  
+
+### Corollary 2.3: Only one account per human allowed
+
+**Goal: as there is no privileged operation any more, there is not
+need for administrative accounts. The must only be one account per
+human** 
+
+This is an aim that aims both at reducing the complexity of
+maintaining credentials for the users and granted permissions based on
+these credentials for management.
+
+Especially in regulated environments a regular report about the granted
+permissions and their review has to be prepared. This is made a lot
+easier if only a single account is managed by the organization for
+each human interacting with the system, regardless of their role in
+the organization or even those external to it.
+
+At the same time, a smaller number of credentials does improve the
+likelihood of stronger password being used. When a single password for
+a shared account, or even better a Single Sign On (SSO) system is
+used, it is easy for users to remember even fairly complex password
+without the need to write them down. 
+
+This single account then can easily be combined with multi-factor
+authentication, which improves security even further.
+
 ## The Third Holy Grail: No Human has Privileged Access to Production Systems.
 
 Most software stacks today establish the role of some form of admin
@@ -379,32 +405,7 @@ The changes should be picked up in a pull-based manner. The target
 system should be able to discover that a requested change is available
 and apply it once. 
   
-### Corollary 3.2: Only one account per human allowed
-
-**Goal: as there is no privileged operation any more, there is not
-need for administrative accounts. The must only be one account per
-human** 
-
-This is an aim that aims both at reducing the complexity of
-maintaining credentials for the users and granted permissions based on
-these credentials for management.
-
-Especially in regulated environments a regular report about the granted
-permissions and their review has to be prepared. This is made a lot
-easier if only a single account is managed by the organization for
-each human interacting with the system, regardless of their role in
-the organization or even those external to it.
-
-At the same time, a smaller number of credentials does improve the
-likelihood of stronger password being used. When a single password for
-a shared account, or even better a Single Sign On (SSO) system is
-used, it is easy for users to remember even fairly complex password
-without the need to write them down. 
-
-This single account then can easily be combined with multi-factor
-authentication, which improves security even further.
-
-### Corollary 3.3: No human has access to customer data
+### Corollary 3.2: No human has access to customer data
 
 **Goal: there is no clear-text access for developers or operators to
 customer data, neither while the system is working nor while it is stopped.** 
@@ -427,8 +428,14 @@ unwilling to invest the effort to implement them.
 
 ## Adversaries
 
-- contracts that block time for updates or require release cycles
--
+While the grails may come within grasping distance through sheer grit in engineering and IT departments, they may be lost forever through actions in others. Getting closer requires a transformation of the whole organization.
+
+Just consider sales striking a contract with an important customer which includes any of the following:
+
+* the requirement to request client certificates through a phone and email discussion with employees of the customer. Especially in multi-national enterprises the person creating the certificate may be far removed from the one from procurement that is striking the deal. 
+* contracts that block certain times of the day or the week for updates or require notification weeks ahead of the change, let alone written sign-of. 
+
+Just as bad are internal obstacles like the unwillingness to constantly review all procedures, technical decisions or methods for the option to improve. And from the point of view of upper-management a number of goals defined above are seen as expensive technical nitpicking. Which makes it all the more vital to be able to clearly document the financial risks that come with loosing traction on the path towards the Grails. 
 
 ## Conclusion
 
