@@ -2,6 +2,7 @@ baseURL = "https://harper-hall.de/"
 languageCode = "en-us"
 title = "Harper Hall"
 theme = "mainroad"
+DisqusShortname = "harper-hall"
 
 [Author] # Used in authorbox
   name = "Lutz Behnke"
@@ -28,6 +29,7 @@ theme = "mainroad"
   highlightColor = "" # Deprecated in favor of .Site.Params.style.vars.highlightColor
   customCSS = ["css/custom.css"] # Include custom CSS files
   customJS = ["js/custom.js"] # Include custom JS files
+  comments = true  # activate Disqus comments
 
 [Params.style.vars]
   highlightColor = "#e22d30" # Override highlight color
