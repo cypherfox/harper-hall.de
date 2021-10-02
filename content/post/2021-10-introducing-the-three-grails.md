@@ -25,7 +25,7 @@ sidebar: "right" # Enable sidebar (on the right side) per page
 #  - "recent"
 #  - "taglist"
 ---
-I have finally taken the time get my thoughts organized and point some points together, about how I think cloud-native systems should be build: [The Three Holy Grails of DevOps]({{{ relref "/pages/the-holy-grails-of-dev-ops" }}}).
+I have finally taken the time get my thoughts organized and point some points together, about how I think cloud-native systems should be build: [The Three Holy Grails of DevOps]({{< relref "/pages/the-holy-grails-of-dev-ops" >}}).
 
 Practically none of the points made are new or revolutionary. Quite to the contrary, I am still searching for publications that support the individual corollaries where they are missing today.
 
