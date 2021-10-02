@@ -19,8 +19,8 @@ But there are technical and organizational steps that help to improve the effect
 There is neither such a thing as a DevOps-Engineer nor a DevOps team (and neither is there a Full-Stack Developer, but that is a story for another day).
 But there are technical and organizational steps that help to improve the effectiveness of your organization and the quality of the services you provide."><meta itemprop=datePublished content="2021-09-26T00:00:00+00:00">
 <meta itemprop=dateModified content="2021-09-26T00:00:00+00:00">
-<meta itemprop=wordCount content="3686">
-<meta itemprop=keywords content="dev-ops,">
+<meta itemprop=wordCount content="3861">
+<meta itemprop=keywords content="dev-ops,lang-en,">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="The Three Holy Grails of DevOps">
 <meta name=twitter:description content="Establishing DevOps is a change in culture. It is all about trust, personal empowerment and cooperating on a larger goal.
@@ -104,13 +104,13 @@ But there are technical and organizational steps that help to improve the effect
 <ul>
 <li><a href=#corollary-21-expect-your-code-to-be-published-to-github-any-day-now>Corollary 2.1: Expect your code to be published to GitHub any day now.</a></li>
 <li><a href=#corollary-22-credentials-are-not-shared>Corollary 2.2: Credentials are not shared.</a></li>
+<li><a href=#corollary-23-only-one-account-per-human-allowed>Corollary 2.3: Only one account per human allowed</a></li>
 </ul>
 </li>
 <li><a href=#the-third-holy-grail-no-human-has-privileged-access-to-production-systems>The Third Holy Grail: No Human has Privileged Access to Production Systems.</a>
 <ul>
 <li><a href=#corollary-31-system-management-through-unprivileged-programs>Corollary 3.1: System Management through unprivileged programs</a></li>
-<li><a href=#corollary-32-only-one-account-per-human-allowed>Corollary 3.2: Only one account per human allowed</a></li>
-<li><a href=#corollary-33-no-human-has-access-to-customer-data>Corollary 3.3: No human has access to customer data</a></li>
+<li><a href=#corollary-32-no-human-has-access-to-customer-data>Corollary 3.2: No human has access to customer data</a></li>
 </ul>
 </li>
 <li><a href=#adversaries>Adversaries</a></li>
@@ -381,6 +381,25 @@ practice, all too often users are expected to enter their passwords in
 multiple login dialogs in clear text, again sharing the information
 with more machines. Do not use clear text password exchanges to
 anybody or anything. That&rsquo;s whats mTLS and SSH are for.</p>
+<h3 id=corollary-23-only-one-account-per-human-allowed>Corollary 2.3: Only one account per human allowed</h3>
+<p><strong>Goal: as there is no privileged operation any more, there is not
+need for administrative accounts. The must only be one account per
+human</strong></p>
+<p>This is an aim that aims both at reducing the complexity of
+maintaining credentials for the users and granted permissions based on
+these credentials for management.</p>
+<p>Especially in regulated environments a regular report about the granted
+permissions and their review has to be prepared. This is made a lot
+easier if only a single account is managed by the organization for
+each human interacting with the system, regardless of their role in
+the organization or even those external to it.</p>
+<p>At the same time, a smaller number of credentials does improve the
+likelihood of stronger password being used. When a single password for
+a shared account, or even better a Single Sign On (SSO) system is
+used, it is easy for users to remember even fairly complex password
+without the need to write them down.</p>
+<p>This single account then can easily be combined with multi-factor
+authentication, which improves security even further.</p>
 <h2 id=the-third-holy-grail-no-human-has-privileged-access-to-production-systems>The Third Holy Grail: No Human has Privileged Access to Production Systems.</h2>
 <p>Most software stacks today establish the role of some form of admin
 user, that has the power to change any aspect of the system state,
@@ -429,26 +448,7 @@ changes to the system should be normal daily business.</p>
 <p>The changes should be picked up in a pull-based manner. The target
 system should be able to discover that a requested change is available
 and apply it once.</p>
-<h3 id=corollary-32-only-one-account-per-human-allowed>Corollary 3.2: Only one account per human allowed</h3>
-<p><strong>Goal: as there is no privileged operation any more, there is not
-need for administrative accounts. The must only be one account per
-human</strong></p>
-<p>This is an aim that aims both at reducing the complexity of
-maintaining credentials for the users and granted permissions based on
-these credentials for management.</p>
-<p>Especially in regulated environments a regular report about the granted
-permissions and their review has to be prepared. This is made a lot
-easier if only a single account is managed by the organization for
-each human interacting with the system, regardless of their role in
-the organization or even those external to it.</p>
-<p>At the same time, a smaller number of credentials does improve the
-likelihood of stronger password being used. When a single password for
-a shared account, or even better a Single Sign On (SSO) system is
-used, it is easy for users to remember even fairly complex password
-without the need to write them down.</p>
-<p>This single account then can easily be combined with multi-factor
-authentication, which improves security even further.</p>
-<h3 id=corollary-33-no-human-has-access-to-customer-data>Corollary 3.3: No human has access to customer data</h3>
+<h3 id=corollary-32-no-human-has-access-to-customer-data>Corollary 3.2: No human has access to customer data</h3>
 <p><strong>Goal: there is no clear-text access for developers or operators to
 customer data, neither while the system is working nor while it is stopped.</strong></p>
 <p>Implementing this would be straight forward: encrypt all data in
@@ -466,10 +466,13 @@ support this. And as few customers are willing to pay for these
 security features, the companies and projects offering them are
 unwilling to invest the effort to implement them.</p>
 <h2 id=adversaries>Adversaries</h2>
+<p>While the grails may come within grasping distance through sheer grit in engineering and IT departments, they may be lost forever through actions in others. Getting closer requires a transformation of the whole organization.</p>
+<p>Just consider sales striking a contract with an important customer which includes any of the following:</p>
 <ul>
-<li>contracts that block time for updates or require release cycles</li>
-<li></li>
+<li>the requirement to request client certificates through a phone and email discussion with employees of the customer. Especially in multi-national enterprises the person creating the certificate may be far removed from the one from procurement that is striking the deal.</li>
+<li>contracts that block certain times of the day or the week for updates or require notification weeks ahead of the change, let alone written sign-of.</li>
 </ul>
+<p>Just as bad are internal obstacles like the unwillingness to constantly review all procedures, technical decisions or methods for the option to improve. And from the point of view of upper-management a number of goals defined above are seen as expensive technical nitpicking. Which makes it all the more vital to be able to clearly document the financial risks that come with loosing traction on the path towards the Grails.</p>
 <h2 id=conclusion>Conclusion</h2>
 <p>After you have established a DevOps culture and are following the
 actual tenants of working agile as proposed in the <a href=https://agilemanifesto.org/>Agile
@@ -503,6 +506,9 @@ that they are good at: learning and being creative.</p>
 <ul class=tags__list>
 <li class=tags__item>
 <a class="tags__link btn" href=/tags/dev-ops/ rel=tag>dev-ops</a>
+</li>
+<li class=tags__item>
+<a class="tags__link btn" href=/tags/lang-en/ rel=tag>lang-en</a>
 </li>
 </ul>
 </div>

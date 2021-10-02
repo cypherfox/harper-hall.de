@@ -3,26 +3,29 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<title>Unified Development Platform - Lightening the Mental Load - Harper Hall</title>
+<title>Introducing the Three Holy Grails - Harper Hall</title>
 <script>(function(a,b){a[b]=a[b].replace("no-js","js")})(document.documentElement,"className")</script>
 <meta name=description content>
-<meta property="og:title" content="Unified Development Platform - Lightening the Mental Load">
-<meta property="og:description" content="About a year ago I was musing with a few colleagues about the next big development in Software Engineering. My expectation was the &ldquo;single unified monolith&rdquo; that most team would be migrating back to. The voices saying that cloud offerings, and Kubernetes in particular, are much too complex where getting louder and louder.
-At the time I did not write about it, as I had no idea, what form this monolith of serenity would take, or I would come from.">
+<meta property="og:title" content="Introducing the Three Holy Grails">
+<meta property="og:description" content="I have finally taken the time get my thoughts organized and point some points together, about how I think cloud-native systems should be build: [The Three Holy Grails of DevOps]({{{ relref &ldquo;/pages/the-holy-grails-of-dev-ops&rdquo; }}}).
+Practically none of the points made are new or revolutionary. Quite to the contrary, I am still searching for publications that support the individual corollaries where they are missing today.
+Therefore please take this document less as a revelation, and more as a personal manifest how I think cloud-native systems should be designed and how an organization should structure itself around that system to reach high levels of efficiency in continuously develop and maintain that system.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://harper-hall.de/post/2021-04-lightening-the-load-unified-platform/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2021-04-25T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-04-25T00:00:00+00:00">
-<meta itemprop=name content="Unified Development Platform - Lightening the Mental Load">
-<meta itemprop=description content="About a year ago I was musing with a few colleagues about the next big development in Software Engineering. My expectation was the &ldquo;single unified monolith&rdquo; that most team would be migrating back to. The voices saying that cloud offerings, and Kubernetes in particular, are much too complex where getting louder and louder.
-At the time I did not write about it, as I had no idea, what form this monolith of serenity would take, or I would come from."><meta itemprop=datePublished content="2021-04-25T00:00:00+00:00">
-<meta itemprop=dateModified content="2021-04-25T00:00:00+00:00">
-<meta itemprop=wordCount content="158">
-<meta itemprop=keywords content="lang-en,DevOps,">
+<meta property="og:url" content="https://harper-hall.de/post/2021-10-introducing-the-three-grails/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-10-01T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-10-01T00:00:00+00:00">
+<meta itemprop=name content="Introducing the Three Holy Grails">
+<meta itemprop=description content="I have finally taken the time get my thoughts organized and point some points together, about how I think cloud-native systems should be build: [The Three Holy Grails of DevOps]({{{ relref &ldquo;/pages/the-holy-grails-of-dev-ops&rdquo; }}}).
+Practically none of the points made are new or revolutionary. Quite to the contrary, I am still searching for publications that support the individual corollaries where they are missing today.
+Therefore please take this document less as a revelation, and more as a personal manifest how I think cloud-native systems should be designed and how an organization should structure itself around that system to reach high levels of efficiency in continuously develop and maintain that system."><meta itemprop=datePublished content="2021-10-01T00:00:00+00:00">
+<meta itemprop=dateModified content="2021-10-01T00:00:00+00:00">
+<meta itemprop=wordCount content="123">
+<meta itemprop=keywords content="lang-en,dev-ops,">
 <meta name=twitter:card content="summary">
-<meta name=twitter:title content="Unified Development Platform - Lightening the Mental Load">
-<meta name=twitter:description content="About a year ago I was musing with a few colleagues about the next big development in Software Engineering. My expectation was the &ldquo;single unified monolith&rdquo; that most team would be migrating back to. The voices saying that cloud offerings, and Kubernetes in particular, are much too complex where getting louder and louder.
-At the time I did not write about it, as I had no idea, what form this monolith of serenity would take, or I would come from.">
+<meta name=twitter:title content="Introducing the Three Holy Grails">
+<meta name=twitter:description content="I have finally taken the time get my thoughts organized and point some points together, about how I think cloud-native systems should be build: [The Three Holy Grails of DevOps]({{{ relref &ldquo;/pages/the-holy-grails-of-dev-ops&rdquo; }}}).
+Practically none of the points made are new or revolutionary. Quite to the contrary, I am still searching for publications that support the individual corollaries where they are missing today.
+Therefore please take this document less as a revelation, and more as a personal manifest how I think cloud-native systems should be designed and how an organization should structure itself around that system to reach high levels of efficiency in continuously develop and maintain that system.">
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=dns-prefetch href=//fonts.googleapis.com>
 <link rel=dns-prefetch href=//fonts.gstatic.com>
@@ -74,28 +77,19 @@ At the time I did not write about it, as I had no idea, what form this monolith 
 <main class=main role=main>
 <article class=post>
 <header class=post__header>
-<h1 class=post__title>Unified Development Platform - Lightening the Mental Load</h1>
+<h1 class=post__title>Introducing the Three Holy Grails</h1>
 <div class="post__meta meta"><div class="meta__item-author meta__item">
 <svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>Lutz Behnke</span>
 </div>
 <div class="meta__item-datetime meta__item">
-<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-04-25T00:00:00Z>2021-04-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/software-engineering/ rel=category>Software Engineering</a>
+<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-10-01T00:00:00Z>2021-10-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/software-engineering/ rel=category>Software Engineering</a>
 </span>
 </div></div>
 </header>
 <div class="content post__content clearfix">
-<p>About a year ago I was musing with a few colleagues about the next big development in Software Engineering. My expectation was the &ldquo;single unified monolith&rdquo; that most team would be migrating back to. The voices saying that cloud offerings, and Kubernetes in particular, are much too complex where getting louder and louder.</p>
-<p>At the time I did not write about it, as I had no idea, what form this monolith of serenity would take, or I would come from.</p>
-<p>I have just read the very informed article &ldquo;<a href=https://world.hey.com/joaoqalves/internal-platforms-a1d1f2ef>Internal Platforms</a>"<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup> by João Alves. I proposes platforms specific to internal needs of an organisation to be exactly that &ldquo;monolith&rdquo; which I was looking for. Except that they are no monoliths, and thus provide most of the benefits but little of the drawbacks.</p>
-<p>These internal platforms also offer a further benefit, that Joao does not sufficiently give them credit for: <a href=https://dl.acm.org/doi/10.5555/2167692.2167713>Translucent Abstractions as introduced by Hiltunen and Schlichting</a>.</p>
-<section class=footnotes role=doc-endnotes>
-<hr>
-<ol>
-<li id=fn:1 role=doc-endnote>
-<p><a href=https://web.archive.org/web/20210419133931/https://world.hey.com/joaoqalves/internal-platforms-a1d1f2ef>archived 2021-04-19</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-</ol>
-</section>
+<p>I have finally taken the time get my thoughts organized and point some points together, about how I think cloud-native systems should be build: [The Three Holy Grails of DevOps]({{{ relref &ldquo;/pages/the-holy-grails-of-dev-ops&rdquo; }}}).</p>
+<p>Practically none of the points made are new or revolutionary. Quite to the contrary, I am still searching for publications that support the individual corollaries where they are missing today.</p>
+<p>Therefore please take this document less as a revelation, and more as a personal manifest how I think cloud-native systems should be designed and how an organization should structure itself around that system to reach high levels of efficiency in continuously develop and maintain that system. And at the same time attain high degrees of security, resilience and scalability concurrently.</p>
 </div>
 <footer class=post__footer>
 <div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg>
@@ -104,7 +98,7 @@ At the time I did not write about it, as I had no idea, what form this monolith 
 <a class="tags__link btn" href=/tags/lang-en/ rel=tag>lang-en</a>
 </li>
 <li class=tags__item>
-<a class="tags__link btn" href=/tags/devops/ rel=tag>DevOps</a>
+<a class="tags__link btn" href=/tags/dev-ops/ rel=tag>dev-ops</a>
 </li>
 </ul>
 </div>
@@ -124,14 +118,8 @@ Distributed Systems since &lsquo;92, Roleplaying Games since &lsquo;84, Politics
 </div>
 <nav class="pager flex">
 <div class="pager__item pager__item--prev">
-<a class=pager__link href=/post/2006-06-efficient-development-checklist/ rel=prev>
+<a class=pager__link href=/post/2021-06-private-go-dependencies/ rel=prev>
 <span class=pager__subtitle>«&#8201;Previous</span>
-<p class=pager__title>Efficient Development Checklist</p>
-</a>
-</div>
-<div class="pager__item pager__item--next">
-<a class=pager__link href=/post/2021-06-private-go-dependencies/ rel=next>
-<span class=pager__subtitle>Next&#8201;»</span>
 <p class=pager__title>Using go Dependencies from private repositories</p>
 </a>
 </div>

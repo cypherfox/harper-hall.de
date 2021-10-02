@@ -70,6 +70,29 @@
 </header><article class="list__item post">
 <header class=list__header>
 <h2 class="list__title post__title">
+<a href=/post/2021-10-introducing-the-three-grails/ rel=bookmark>
+Introducing the Three Holy Grails
+</a>
+</h2>
+<div class="list__meta meta"><div class="meta__item-author meta__item">
+<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>Lutz Behnke</span>
+</div>
+<div class="meta__item-datetime meta__item">
+<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-10-01T00:00:00Z>2021-10-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/software-engineering/ rel=category>Software Engineering</a>
+</span>
+</div></div>
+</header>
+<div class="content list__excerpt post__content clearfix">
+I have finally taken the time get my thoughts organized and point some points together, about how I think cloud-native systems should be build: [The Three Holy Grails of DevOps]({{{ relref &ldquo;/pages/the-holy-grails-of-dev-ops&rdquo; }}}).
+Practically none of the points made are new or revolutionary. Quite to the contrary, I am still searching for publications that support the individual corollaries where they are missing today.
+Therefore please take this document less as a revelation, and more as a personal manifest how I think cloud-native systems should be designed and how an organization should structure itself around that system to reach high levels of efficiency in continuously develop and maintain that system.
+</div>
+<div class="list__footer clearfix">
+<a class="list__footer-readmore btn" href=/post/2021-10-introducing-the-three-grails/>Read more…</a>
+</div>
+</article><article class="list__item post">
+<header class=list__header>
+<h2 class="list__title post__title">
 <a href=/pages/the-holy-grails-of-dev-ops/ rel=bookmark>
 The Three Holy Grails of DevOps
 </a>
@@ -93,31 +116,6 @@ But there are technical and organizational steps that help to improve the effect
 </article><article class="list__item post">
 <header class=list__header>
 <h2 class="list__title post__title">
-<a href=/pages/setting-up-yubikey/ rel=bookmark>
-Setting up the YubiKey
-</a>
-</h2>
-<div class="list__meta meta"><div class="meta__item-author meta__item">
-<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>Lutz Behnke</span>
-</div>
-<div class="meta__item-datetime meta__item">
-<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-08-01T00:00:00Z>2021-08-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/software-engineering/ rel=category>Software Engineering</a>
-</span>
-</div></div>
-</header>
-<div class="content list__excerpt post__content clearfix">
-This is my adpation of https://github.com/drduh/YubiKey-Guide
-Here I skip the machine setup covery by Dr. Duh. The short of it is: you need a machine with a current kernal that is disconnecte from the network.
-Below are my choices and changes. This is even more opinionated than his document.
-Creating Keys Setup the environment:
-$ export GNUPGHOME=$(mktemp -d) $ wget -O $GNUPGHOME/gpg.conf https://raw.githubusercontent.com/drduh/config/master/gpg.conf Generate a Pin $ tr -dc '[:upper:]' &lt; /dev/urandom | fold -w 20 | head -n1 Write down the pin and keep in safe place.
-</div>
-<div class="list__footer clearfix">
-<a class="list__footer-readmore btn" href=/pages/setting-up-yubikey/>Read more…</a>
-</div>
-</article><article class="list__item post">
-<header class=list__header>
-<h2 class="list__title post__title">
 <a href=/pages/books/ rel=bookmark>
 Books of Interest
 </a>
@@ -131,11 +129,8 @@ Books of Interest
 </div></div>
 </header>
 <div class="content list__excerpt post__content clearfix">
-Books of interest Unicorn Project,Gene Kim, 2019
-Phoenix Project,Gene Kim, 2013
-The DevOPS Handbook,Gene Kim, 2016
-Accelerate: The Science of Lean Software and Devops: Building and Scaling High Performing Technology Organizations,von Nicole Forsgren Phd and Jez Humble and Gene Kim, 2018
-Site Reliability Engineering: How Google Runs Production Systems,Betsy Beyer and Chris Jones and Jennifer Petoff and Niall Richard Murphy, 2016
+Books of interest I think that everybody who designs software systems or manages people who in turn design software software system should have read most or all of these books. I have repeatedly experience people ignoring the lessens taught by the authors of these books, sometimes even decades after publications.
+The books are in order of original publication, not order of preference. Especially the books (co-)written by Gene Kim make a lot more sense when read in the order of publication.
 </div>
 <div class="list__footer clearfix">
 <a class="list__footer-readmore btn" href=/pages/books/>Read more…</a>
@@ -221,11 +216,11 @@ Software Development [https://www.youtube.com/c/ContinuousDelivery/videos](Conti
 <h4 class=widget__title>Recent Posts</h4>
 <div class=widget__content>
 <ul class=widget__list>
+<li class=widget__item><a class=widget__link href=/post/2021-10-introducing-the-three-grails/>Introducing the Three Holy Grails</a></li>
 <li class=widget__item><a class=widget__link href=/post/2021-06-private-go-dependencies/>Using go Dependencies from private repositories</a></li>
 <li class=widget__item><a class=widget__link href=/post/2021-04-lightening-the-load-unified-platform/>Unified Development Platform - Lightening the Mental Load</a></li>
 <li class=widget__item><a class=widget__link href=/post/2006-06-efficient-development-checklist/>Efficient Development Checklist</a></li>
 <li class=widget__item><a class=widget__link href=/post/2005-12-the-server-war/>The Server War</a></li>
-<li class=widget__item><a class=widget__link href=/post/2005-12-getting-back-control-of-information-dissemination/>Getting back control of information dissemination</a></li>
 </ul>
 </div>
 </div>
@@ -243,6 +238,8 @@ Software Development [https://www.youtube.com/c/ContinuousDelivery/videos](Conti
 <a class=widget__link href=/categories/politics/>Politics</a></li>
 <li class=widget__item>
 <a class=widget__link href=/categories/software-engineering/>Software Engineering</a></li>
+<li class=widget__item>
+<a class=widget__link href=/categories/system-administration/>System Administration</a></li>
 </ul>
 </div>
 </div>
